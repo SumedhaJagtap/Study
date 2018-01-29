@@ -1,0 +1,205 @@
+select * from pg_user;
+psql -l;
+\q
+select * from pg_databse;
+select * from pg_database;
+\h create user;
+\q
+\h create table;
+\d
+create temp table pqr(a integer);
+\d
+\q
+\d
+\i /home/sumedha/sem3/adt/p.sql 
+\i /home/sumedha/sem3/adt/p.sql 
+select *,oid from customer;
+select *,oid from item;
+select oid,* from item;
+select oid,* from oderinfo;
+select oid,* from orderinfo;
+select oid,* from stock;
+select oid,* from orderline;
+select oid,* from barcode;
+\d customer;
+\d
+\df nextval
+\df+ nextval
+\df+ nextval
+\df+ nextval
+\d customer;
+select * from customer,orderinf
+\e
+select * from customer,orderinfo where customer.customer_id=orderinfo.customer_id;
+\e
+select * from customer,orderinfo where customer.customer_id=orderinfo.customer_id;
+\e
+select * from customer,orderinfo where customer.customer_id=orderinfo.customer_id;
+\e
+\h \e
+\e
+select * from item,stock where item.item_id=stock.item_id;
+\e
+select * from item,barcode,stock where item.item_id=stock.item_id and item.item_id=barcode.item_id;
+select * from customer;
+select * from customer;
+select customer_id from customer;
+select oid,relname from pg_class where relname like 'customer';
+\d pg_attribute;
+select attname from pg_attribute where attname like 'customer%';
+select attname,attrelid from pg_attribute where attname like 'customer%';
+select relname from pg_class where oid is ();
+select relname from pg_class where oid is (16872,16876,16888);
+select relname from pg_class where oid in (16872,16876,16888);
+\d customer_customer_id_seq;
+select customer_id from customer;
+delete from customer where customer_id=7;
+select customer_id from customer;
+\d customer_customer_id_seq;
+insert into customer(zipcode,fname,lname) values (422011,'asdf,'weqe'); \d customer_customer_id_seq;';);
+insert into customer(zipcode,fname,lname) values (422011,'asdf','weqe'); 
+select customer_id from customer;
+\d customer_customer_id_seq;
+create table mytable(select * from customer);
+create table mytable as (select * from customer);
+\d mytable
+insert into mytable (select * from customer);
+insert into mytable (select * from customer);
+insert into mytable (select * from customer);
+select * from mytable ;
+select oid,relname,relpages from pg_class where relname like 'mytable';
+select * from mytable ;
+select from (select * from mytable );
+select * from (select * from mytable );
+select attrelid,attname from pg_attribute where attname like 'customer_id';
+select * from actor;
+\d pg_class;
+\d pg_tables;
+select oid,relname from pg_class ;
+select oid,relname,relfilename from pg_class ;
+select oid,relname,relfilenode from pg_class ;
+select oid,relname,relfilenode from pg_class order by relfilenode ; 
+select oid,relname,relfilenode from pg_class where relname like 'pg_Class' order by relfilenode ; 
+select oid,relname,relfilenode from pg_class where relname like 'pg_class' order by relfilenode ; 
+select oid,relname,relfilenode from pg_class where relname like 'pg_statistics' order by relfilenode ; 
+select oid,relname,relfilenode from pg_class where relname like 'pg_class' order by relfilenode ; 
+select oid,relname,relfilenode from pg_class order by relfilenode ; 
+\d pg_statistic;
+\d
+\l
+alter user sumedha superuser ;
+\d
+\l
+\q
+select * from orderinfo;
+\i /home/sumedha/sem3/adt/p.sql 
+select * from orderinfo;
+\e
+select * from orderinfo;
+select * from barcode;
+\q
+select * from oderline where orderinfo.orderinfo_id=2;
+select * from orderline where orderinfo.orderinfo_id=2;
+select * from orderline where orderline.orderinfo_id=2;
+select description from item,barcode where barcode.item_id=item.item_id;
+select description,barcode from item,barcode where barcode.item_id=item.item_id;
+select description,barcode,barcode.item_id from item,barcode where barcode.item_id=item.item_id;
+select distinct description,barcode,barcode.item_id from item,barcode where barcode.item_id=item.item_id;
+select * from item;
+select * from barcode;
+select description,barcode from customer,orderinfo,orderline,item,barcode where customer.customer_id=orderinfo.customer_id and orderinfo.orderinfo_id=orderline.orderinfo_id and orderline.item_id=item.item_id and item.item_id=barcode.item_id;
+select description,barcode from barcode,item where barcode,description not in (select description,barcode customer,orderinfo,orderline,item,barcode where customer.customer_id=orderinfo.customer_id and orderinfo.orderinfo_id=orderline.orderinfo_id and orderline.item_id=item.item_id and item.item_id=barcode.item_id);
+select description,barcode from barcode,item where barcode not in (select barcode customer,orderinfo,orderline,item,barcode where customer.customer_id=orderinfo.customer_id and orderinfo.orderinfo_id=orderline.orderinfo_id and orderline.item_id=item.item_id and item.item_id=barcode.item_id);
+select description,barcode from barcode,item where barcode not in (select barcode from customer,orderinfo,orderline,item,barcode where customer.customer_id=orderinfo.customer_id and orderinfo.orderinfo_id=orderline.orderinfo_id and orderline.item_id=item.item_id and item.item_id=barcode.item_id);
+select description,barcode from barcode,item where barcode not in (select barcode from customer,orderinfo,orderline,item,barcode where customer.customer_id=orderinfo.customer_id and orderinfo.orderinfo_id=orderline.orderinfo_id and orderline.item_id=item.item_id and item.item_id=barcode.item_id);
+select description from item where barcode not in (select barcode from customer,orderinfo,orderline,item,barcode where customer.customer_id=orderinfo.customer_id and orderinfo.orderinfo_id=orderline.orderinfo_id and orderline.item_id=item.item_id and item.item_id=barcode.item_id);
+select description from item,barcode where barcode not in (select barcode from customer,orderinfo,orderline,item,barcode where customer.customer_id=orderinfo.customer_id and orderinfo.orderinfo_id=orderline.orderinfo_id and orderline.item_id=item.item_id and item.item_id=barcode.item_id);
+select description from item,barcode where description not in (select barcode from customer,orderinfo,orderline,item,barcode where customer.customer_id=orderinfo.customer_id and orderinfo.orderinfo_id=orderline.orderinfo_id and orderline.item_id=item.item_id and item.item_id=barcode.item_id);
+select description from item,barcode where description not in (select description from customer,orderinfo,orderline,item,barcode where customer.customer_id=orderinfo.customer_id and orderinfo.orderinfo_id=orderline.orderinfo_id and orderline.item_id=item.item_id and item.item_id=barcode.item_id);
+select description from item where description not in (select description from customer,orderinfo,orderline,item,barcode where customer.customer_id=orderinfo.customer_id and orderinfo.orderinfo_id=orderline.orderinfo_id and orderline.item_id=item.item_id and item.item_id=barcode.item_id);
+select * from item;
+\q
+\q
+\q
+\h array
+\d array
+\df array
+\df+ array
+create table class(course varchar(7),year smallint,students[]);
+create table class(course varchar(7),year smallint,students text[]);
+create table exam(stud_id int,stud_name varchar(10),course_grade text[][]);
+drop table class;
+create table class(course varchar(7),year int,students text[]);
+insert into class values('CS-101',2017,{'Sumedha','Neha','Khushboo','Rashmi'});
+insert into class values('CS-101',2017,{"Sumedha",'Neha','Khushboo','Rashmi'});
+insert into class values('CS-101',2017,{'Sumedha','Neha','Khushboo','Rashmi'});
+insert into class values('CS-101',2017,'{''Sumedha','Neha','Khushboo','Rashmi''}');
+insert into class values('CS-101',2017,'{'Sumedha','Neha','Khushboo','Rashmi'}');
+insert into class values('CS-101',2017,'{"Sumedha","Neha","Khushboo","Rashmi"}');
+insert into class values('CS-102',2017,'{"Sufi","Nikhil","Karan","Rahul"}');
+\d exam
+insert into exam values(16218,"Sumedha",'{{"CS-101","CS-102"},{"P","C"}}');
+insert into exam values(16218,'Sumedha','{{"CS-101","CS-102"},{"P","C"}}');
+insert into exam values(16210,'Neha','{{"CS-101","CS-102"},{"B","C"}}');
+select student[2] from class;
+select class.student[2] from class;
+\d class;
+select class.students[2] from class;
+select * from class;
+select class.students[3] from class;
+select class.students[4] from class;
+select class.students[1] from class;
+select class.students[1] from class where course_id='CS-101';
+select class.students[1] from class where class.course_id='CS-101';
+\d class 
+select class.students[1] from class where class.course='CS-101';
+select class.students[1] from class where class.course='CS-102';
+\d exam 
+select course_grade[1][2] as course, course_grade[2][2] as grade from exam;
+select * from exam;
+select course_grade[1][2] as course, course_grade[2][2] as grade from exam where stude_name='sumedha';
+select course_grade[1][2] as course, course_grade[2][2] as grade from exam where course_grade.stude_name='sumedha';
+select course_grade[1][2] as course, course_grade[2][2] as grade from exam where stud_name='sumedha';
+select course_grade[1][2] as course, course_grade[2][2] as grade from exam where course_grade.stud_name='sumedha';
+\d exam
+select course_grade[1][2] as course, course_grade[2][2] as grade from exam where exam.stud_name='sumedha';
+select course_grade[1][2] as course, course_grade[2][2] as grade from exam where exam.stud_name="sumedha";
+select course_grade[1][2] as course, course_grade[2][2] as grade from exam where exam.stud_name='sumedha';
+select course_grade[1][2] as course, course_grade[2][2] as grade from exam where stud_name='sumedha';
+select * from exam;
+select course_grade[1][2] as course, course_grade[2][2] as grade from exam where stud_name='Sumedha';
+update exam set course_grade[2][2]='A' where stud_name='Neha';
+select * from exam;
+update exam set course_grade='{{"CS-105","CS-103"},{"A","B"}}' where stud_name='Neha';
+select * from exam;
+select * from class;
+update class set students[5]="Mukesh" where course='CS-102';
+update class set students[5]='Mukesh' where course='CS-102';
+select * from class;
+update class set students[6]='Kush' where course='CS-102';
+select * from class;
+update class set students=students || ARRAy['Rutika','Monu'] where course='CS-101';
+select * from class;
+select course,year from class where 'Sufi'=any(students);
+select course,year from class where 'Sufi'=any(year);
+select course,year from class where 'Sufi'=any(students);
+select course,year from class where 'Sufi'=all(students);
+select course,year from class where 'CS-102'=any(students);
+select course,year from class where 'CS-102'=any(course);
+select year from class where 'CS-102'=any(course);
+select year from class where 'CS-102'=any(course);
+select year from class where 'CS-102'=all(course);
+select year from class where 'Sufi'=all(course);
+select year from class where 'Sufi'=all(students);
+select year from class where 'Sufi'=any(students);
+select year from class where 'Sufi'=any(students);
+select year from class where 'CS-101'=any(course);
+select year from class where "CS-101"=any(course);
+select * from class;
+\d class
+select year,students from class where "CS-101"=any(course);
+select year,students from class where 'CS-101'=any(course);
+select *from class;
+select year,students from class where 'CS-101'=any(course);
+\q
+\i /home/sume1995/sem3/adt/p.sql 

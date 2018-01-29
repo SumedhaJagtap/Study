@@ -1,0 +1,501 @@
+
+select oid,* from stock;
+select oid,* from orderline;
+select oid,* from barcode;
+\d customer;
+\d
+\df nextval
+\df+ nextval
+\df+ nextval
+\df+ nextval
+\d customer;
+select * from customer,orderinf
+\e
+select * from customer,orderinfo where customer.customer_id=orderinfo.customer_id;
+\e
+select * from customer,orderinfo where customer.customer_id=orderinfo.customer_id;
+\e
+select * from customer,orderinfo where customer.customer_id=orderinfo.customer_id;
+\e
+\h \e
+\e
+select * from item,stock where item.item_id=stock.item_id;
+\e
+select * from item,barcode,stock where item.item_id=stock.item_id and item.item_id=barcode.item_id;
+select * from customer;
+select * from customer;
+select customer_id from customer;
+select oid,relname from pg_class where relname like 'customer';
+\d pg_attribute;
+select attname from pg_attribute where attname like 'customer%';
+select attname,attrelid from pg_attribute where attname like 'customer%';
+select relname from pg_class where oid is ();
+select relname from pg_class where oid is (16872,16876,16888);
+select relname from pg_class where oid in (16872,16876,16888);
+\d customer_customer_id_seq;
+select customer_id from customer;
+delete from customer where customer_id=7;
+select customer_id from customer;
+\d customer_customer_id_seq;
+insert into customer(zipcode,fname,lname) values (422011,'asdf,'weqe'); \d customer_customer_id_seq;';);
+insert into customer(zipcode,fname,lname) values (422011,'asdf','weqe'); 
+select customer_id from customer;
+\d customer_customer_id_seq;
+create table mytable(select * from customer);
+create table mytable as (select * from customer);
+\d mytable
+insert into mytable (select * from customer);
+insert into mytable (select * from customer);
+insert into mytable (select * from customer);
+select * from mytable ;
+select oid,relname,relpages from pg_class where relname like 'mytable';
+select * from mytable ;
+select from (select * from mytable );
+select * from (select * from mytable );
+select attrelid,attname from pg_attribute where attname like 'customer_id';
+select * from actor;
+\d pg_class;
+\d pg_tables;
+select oid,relname from pg_class ;
+select oid,relname,relfilename from pg_class ;
+select oid,relname,relfilenode from pg_class ;
+select oid,relname,relfilenode from pg_class order by relfilenode ; 
+select oid,relname,relfilenode from pg_class where relname like 'pg_Class' order by relfilenode ; 
+select oid,relname,relfilenode from pg_class where relname like 'pg_class' order by relfilenode ; 
+select oid,relname,relfilenode from pg_class where relname like 'pg_statistics' order by relfilenode ; 
+select oid,relname,relfilenode from pg_class where relname like 'pg_class' order by relfilenode ; 
+select oid,relname,relfilenode from pg_class order by relfilenode ; 
+\d pg_statistic;
+\d
+\l
+alter user sumedha superuser ;
+\d
+\l
+\q
+select * from orderinfo;
+\i /home/sumedha/sem3/adt/p.sql 
+select * from orderinfo;
+\e
+select * from orderinfo;
+select * from barcode;
+\q
+select * from oderline where orderinfo.orderinfo_id=2;
+select * from orderline where orderinfo.orderinfo_id=2;
+select * from orderline where orderline.orderinfo_id=2;
+select description from item,barcode where barcode.item_id=item.item_id;
+select description,barcode from item,barcode where barcode.item_id=item.item_id;
+select description,barcode,barcode.item_id from item,barcode where barcode.item_id=item.item_id;
+select distinct description,barcode,barcode.item_id from item,barcode where barcode.item_id=item.item_id;
+select * from item;
+select * from barcode;
+select description,barcode from customer,orderinfo,orderline,item,barcode where customer.customer_id=orderinfo.customer_id and orderinfo.orderinfo_id=orderline.orderinfo_id and orderline.item_id=item.item_id and item.item_id=barcode.item_id;
+select description,barcode from barcode,item where barcode,description not in (select description,barcode customer,orderinfo,orderline,item,barcode where customer.customer_id=orderinfo.customer_id and orderinfo.orderinfo_id=orderline.orderinfo_id and orderline.item_id=item.item_id and item.item_id=barcode.item_id);
+select description,barcode from barcode,item where barcode not in (select barcode customer,orderinfo,orderline,item,barcode where customer.customer_id=orderinfo.customer_id and orderinfo.orderinfo_id=orderline.orderinfo_id and orderline.item_id=item.item_id and item.item_id=barcode.item_id);
+select description,barcode from barcode,item where barcode not in (select barcode from customer,orderinfo,orderline,item,barcode where customer.customer_id=orderinfo.customer_id and orderinfo.orderinfo_id=orderline.orderinfo_id and orderline.item_id=item.item_id and item.item_id=barcode.item_id);
+select description,barcode from barcode,item where barcode not in (select barcode from customer,orderinfo,orderline,item,barcode where customer.customer_id=orderinfo.customer_id and orderinfo.orderinfo_id=orderline.orderinfo_id and orderline.item_id=item.item_id and item.item_id=barcode.item_id);
+select description from item where barcode not in (select barcode from customer,orderinfo,orderline,item,barcode where customer.customer_id=orderinfo.customer_id and orderinfo.orderinfo_id=orderline.orderinfo_id and orderline.item_id=item.item_id and item.item_id=barcode.item_id);
+select description from item,barcode where barcode not in (select barcode from customer,orderinfo,orderline,item,barcode where customer.customer_id=orderinfo.customer_id and orderinfo.orderinfo_id=orderline.orderinfo_id and orderline.item_id=item.item_id and item.item_id=barcode.item_id);
+select description from item,barcode where description not in (select barcode from customer,orderinfo,orderline,item,barcode where customer.customer_id=orderinfo.customer_id and orderinfo.orderinfo_id=orderline.orderinfo_id and orderline.item_id=item.item_id and item.item_id=barcode.item_id);
+select description from item,barcode where description not in (select description from customer,orderinfo,orderline,item,barcode where customer.customer_id=orderinfo.customer_id and orderinfo.orderinfo_id=orderline.orderinfo_id and orderline.item_id=item.item_id and item.item_id=barcode.item_id);
+select description from item where description not in (select description from customer,orderinfo,orderline,item,barcode where customer.customer_id=orderinfo.customer_id and orderinfo.orderinfo_id=orderline.orderinfo_id and orderline.item_id=item.item_id and item.item_id=barcode.item_id);
+select * from item;
+\q
+\q
+\q
+\h array
+\d array
+\df array
+\df+ array
+create table class(course varchar(7),year smallint,students[]);
+create table class(course varchar(7),year smallint,students text[]);
+create table exam(stud_id int,stud_name varchar(10),course_grade text[][]);
+drop table class;
+create table class(course varchar(7),year int,students text[]);
+insert into class values('CS-101',2017,{'Sumedha','Neha','Khushboo','Rashmi'});
+insert into class values('CS-101',2017,{"Sumedha",'Neha','Khushboo','Rashmi'});
+insert into class values('CS-101',2017,{'Sumedha','Neha','Khushboo','Rashmi'});
+insert into class values('CS-101',2017,'{''Sumedha','Neha','Khushboo','Rashmi''}');
+insert into class values('CS-101',2017,'{'Sumedha','Neha','Khushboo','Rashmi'}');
+insert into class values('CS-101',2017,'{"Sumedha","Neha","Khushboo","Rashmi"}');
+insert into class values('CS-102',2017,'{"Sufi","Nikhil","Karan","Rahul"}');
+\d exam
+insert into exam values(16218,"Sumedha",'{{"CS-101","CS-102"},{"P","C"}}');
+insert into exam values(16218,'Sumedha','{{"CS-101","CS-102"},{"P","C"}}');
+insert into exam values(16210,'Neha','{{"CS-101","CS-102"},{"B","C"}}');
+select student[2] from class;
+select class.student[2] from class;
+\d class;
+select class.students[2] from class;
+select * from class;
+select class.students[3] from class;
+select class.students[4] from class;
+select class.students[1] from class;
+select class.students[1] from class where course_id='CS-101';
+select class.students[1] from class where class.course_id='CS-101';
+\d class 
+select class.students[1] from class where class.course='CS-101';
+select class.students[1] from class where class.course='CS-102';
+\d exam 
+select course_grade[1][2] as course, course_grade[2][2] as grade from exam;
+select * from exam;
+select course_grade[1][2] as course, course_grade[2][2] as grade from exam where stude_name='sumedha';
+select course_grade[1][2] as course, course_grade[2][2] as grade from exam where course_grade.stude_name='sumedha';
+select course_grade[1][2] as course, course_grade[2][2] as grade from exam where stud_name='sumedha';
+select course_grade[1][2] as course, course_grade[2][2] as grade from exam where course_grade.stud_name='sumedha';
+\d exam
+select course_grade[1][2] as course, course_grade[2][2] as grade from exam where exam.stud_name='sumedha';
+select course_grade[1][2] as course, course_grade[2][2] as grade from exam where exam.stud_name="sumedha";
+select course_grade[1][2] as course, course_grade[2][2] as grade from exam where exam.stud_name='sumedha';
+select course_grade[1][2] as course, course_grade[2][2] as grade from exam where stud_name='sumedha';
+select * from exam;
+select course_grade[1][2] as course, course_grade[2][2] as grade from exam where stud_name='Sumedha';
+update exam set course_grade[2][2]='A' where stud_name='Neha';
+select * from exam;
+update exam set course_grade='{{"CS-105","CS-103"},{"A","B"}}' where stud_name='Neha';
+select * from exam;
+select * from class;
+update class set students[5]="Mukesh" where course='CS-102';
+update class set students[5]='Mukesh' where course='CS-102';
+select * from class;
+update class set students[6]='Kush' where course='CS-102';
+select * from class;
+update class set students=students || ARRAy['Rutika','Monu'] where course='CS-101';
+select * from class;
+select course,year from class where 'Sufi'=any(students);
+select course,year from class where 'Sufi'=any(year);
+select course,year from class where 'Sufi'=any(students);
+select course,year from class where 'Sufi'=all(students);
+select course,year from class where 'CS-102'=any(students);
+select course,year from class where 'CS-102'=any(course);
+select year from class where 'CS-102'=any(course);
+select year from class where 'CS-102'=any(course);
+select year from class where 'CS-102'=all(course);
+select year from class where 'Sufi'=all(course);
+select year from class where 'Sufi'=all(students);
+select year from class where 'Sufi'=any(students);
+select year from class where 'Sufi'=any(students);
+select year from class where 'CS-101'=any(course);
+select year from class where "CS-101"=any(course);
+select * from class;
+\d class
+select year,students from class where "CS-101"=any(course);
+select year,students from class where 'CS-101'=any(course);
+select *from class;
+select year,students from class where 'CS-101'=any(course);
+\q
+\i /home/sume1995/sem3/adt/p.sql 
+create table abc(a integer,b integer);
+insert into abc values(1,3);
+insert into abc values(2,4);
+insert into abc values(5,4);
+insert into abc values(5,9);
+insert into abc values(1,0);
+insert into abc values(3,10);
+select * from abc l;
+select * from abc l;
+select * from abc;
+select * from abc;
+commit ;
+begin;
+select * from abc ;
+update abc set b = 3 where a = 9;
+rollback ;
+begin ;
+update abc set b = 9 where a = 3;
+update abc set b = 3 where a = 9;
+end;
+begin ;
+select * from abc ;
+update abc set b = 9 where a = 3;
+update abc set b=2 where a=9;
+end;
+update abc set b = 9 where a = 3;
+update abc set b=2 where a=9;
+commit ;
+\q
+select * from abc ;
+drop table abc;
+create table abc(x integer,y integer);
+insert into abc values(1,11);
+insert into abc values(2,22);
+insert into abc values(3,33);
+insert into abc values(4,44);
+insert into abc values(5,55);
+insert into abc values(6,66);
+select * from abc ;
+select * from abc ;
+select * from abc ;
+select * from abc;
+select * from abc1;
+\q
+\d pg_toast_2619
+pg_toast_2619;
+\d pg_toast_2619;
+select relkind,relname from pg_class;
+select * from pg_class where oid=2619;
+select * from pg_statistics;
+select * from pg_statistic;
+select distinct(relkind) from pg_class;
+select distinct(reltype) from pg_class;
+select distinct(relname) from pg_class;
+select relname from pg_class where relname like 'pg_toast%';
+select relname from pg_class where relname like 'pg_toast%' and relkind like 't';
+\d
+select * from abc;
+create table xyx as(select * from abc);
+select * from xyz;
+select * from xyx;
+insert into xyx values(select * from abc);
+insert into xyx as (select * from abc);
+insert into xyx(select * from abc);
+select * from xyx;
+insert into xyx values(10,20);
+select * from xyx;
+\q
+create table tb1 ( a int, cnt char(3));
+create table tb4 ( a int, cnt char(3));
+insert into tb4 values (1,"monu");
+insert into tb4 values (1,'monu');
+insert into tb4 values (1,'mon');
+insert into tb4 values (2,'rc');
+select * from tb4 group by a;
+select sum(a) from tb4 group by a;
+select sum(a) from tb4 group by a having a>0;
+select sum(a) from tb4 group by a having a>1;
+select count(a) from tb4 group by a having a>1;
+insert into tb4 values (3,'rc');
+select count(a) from tb4 group by a having a>1;
+select count(a) from tb4 group by a having a>1 and a<10;
+insert into tb4 values (12,'rc');
+select count(a) from tb4 group by a having a>1 and a<10;
+select count(a),a from tb4 group by a having a>1 and a<10;
+select count(a),a from tb4 group by a having a>1 and a=10;
+select count(a),a from tb4 group by a having a>1 and a<10;
+select count(a),a from tb4 group by cnt having a>1 and a<10;
+select count(cnt),a from tb4 group by cnt having a>1 and a<10;
+select count(cnt) from tb4 group by cnt having a>1 and a<10;
+select count(cnt) from tb4 group by cnt having cnt>1 and a<10;
+show search_path;
+create schema mn;
+set search_path to mn;
+show search_path;
+select * abc;
+select * from abc;
+\d
+\d pg_catalog;
+\d pg_catalog
+set search_path to public;
+\d pg_catalog
+\d
+\d
+select * from abc;
+select * from abc limit 3;
+select * from abc limit 1;
+select * from abc offset 1;
+select * from abc offset 2;
+select * from abc offset 3;
+select * from abc limit 1;
+select * from abc limit 1 offset 2;
+select * from abc offset 2;
+select * from abc offset 2 limit 1;
+\d
+select * from customer;
+select * from item;
+\d
+select * from orderinfo;
+select * from orderline;
+select * from orderline ol,customer c,1
+select * from customer;
+select * from customer;
+select * from item;
+select * from orderinfo;
+select * from orderline;
+select * from customer;
+\timing
+select * from customer;
+\q
+select * from item;
+\d item;
+\e
+create or replace function isPrime(integer) returns text as'declarea alias for $1;i integer;cnt integer;begini:=a;cnt:=0;while i>0LOOPIF a%i==0 THEN   cnt:=cnt+1;END IF; i:=i-1;END LOOP;IF cnt==2 THEN return True;ELSE  return False;END IF;end;'language plpgsql;
+select * from isPrime(2);
+create or replace function isPrime(integer) returns text as'declarea alias for $1;i integer;cnt integer;begini:=a;cnt:=0;while i>0LOOPIF a%i=0 THEN   cnt:=cnt+1;END IF; i:=i-1;END LOOP;IF cnt=2 THEN return True;ELSE  return False;END IF;end;'language plpgsql;
+select * from isPrime(2);
+select * from isPrime(3);
+select * from isPrime(90);
+create or replace function isPrime(integer) returns text as'declarea alias for $1;i integer;cnt integer;begini:=a;cnt:=0;while i>0LOOPIF a%i=0 THEN   cnt:=cnt+1;END IF; i:=i-1;END LOOP;IF cnt=2 THEN return True;ELSE  return False;END IF;end;'language plpgsql;
+select * from isPrime(90);
+create or replace function isPrime(integer) returns text as'declarea alias for $1;i integer;cnt integer;begini:=a;cnt:=0;while i>0LOOPIF a%i=0 THEN   cnt:=cnt+1;END IF; i:=i-1;END LOOP;IF cnt=2 THEN return "True";ELSE  return "False";END IF;end;'language plpgsql;
+select * from isPrime(90);
+create or replace function isPrime(integer) returns text as'declarea alias for $1;i integer;cnt integer;begini:=a;cnt:=0;while i>0LOOPIF a%i=0 THEN   cnt:=cnt+1;END IF; i:=i-1;END LOOP;IF cnt=2 THEN return True;ELSE  return False;END IF;end;'language plpgsql;
+select * from isPrime(90);
+select * from isPrime(5);
+select * from isPrime(100);
+select * from isPrime(19);
+select * from isPrime(23);
+select * from isPrime(29);
+select * from isPrime(31);
+select * from isPrime(37);
+select * from isPrime(60);
+create or replace function primeNos(integer) returns integer as'declarea alias for $1;i integer;j integer;cnt integer;begini:=a;j:=1;cnt:=0;while i>0LOOPIF a%i=0 THEN   cnt:=cnt+1;END IF; i:=i-1;END LOOP;IF cnt=2 THEN return True;ELSE  return False;END IF;end;'language plpgsql;
+create or replace function primeNos(integer) returns integer as'declarea alias for $1;i integer;j integer;cnt integer;begini:=a;j:=1;cnt:=0; FOR j IN 1..awhile i>0LOOPIF j%i=0 THEN   cnt:=cnt+1;END IF; i:=i-1;END LOOP;IF cnt=2 THEN return j;END IF;END LOOP; end;'language plpgsql;
+create or replace function primeNos(integer) returns integer as'declarea alias for $1;i integer;j integer;cnt integer;begini:=a;j:=1;cnt:=0; FOR j IN 1..aLOOP while i>0LOOPIF j%i=0 THEN   cnt:=cnt+1;END IF; i:=i-1;END LOOP;IF cnt=2 THEN return j;END IF;END LOOP; end;'language plpgsql;
+select * from primeNos(5);
+create or replace function primeNos(integer) returns integer as'declarea alias for $1;i integer;j integer;cnt integer;begini:=a;j:=1;cnt:=0; FOR j IN 1..aLOOP while i>0LOOPIF j%i=0 THEN   cnt:=cnt+1;END IF; i:=i-1;END LOOP;IF cnt=2 THEN return j;END IF;END LOOP; end;'language plpgsql;
+select * from primeNos(5);
+create or replace function primeNos(integer) returns integer as'declarea alias for $1;i integer; msg varchar; msg:="";j integer;cnt integer;begini:=a;j:=1;cnt:=0; FOR j IN 1..aLOOP while i>0LOOPIF j%i=0 THEN   cnt:=cnt+1;END IF; i:=i-1;END LOOP;IF cnt=2 THEN return j;END IF;END LOOP; end;'language plpgsql;
+create or replace function primeNos(integer) returns integer as'declarea alias for $1;i integer; msg varchar; j integer;cnt integer;begini:=a;j:=1;msg:=""; cnt:=0; FOR j IN 1..aLOOP while i>0LOOPIF j%i=0 THEN   cnt:=cnt+1;END IF; i:=i-1;END LOOP;IF cnt=2 THEN return msg||j;END IF;END LOOP; end;'language plpgsql;
+create or replace function primeNos(integer) returns integer as'declarea alias for $1;i integer; msg varchar; j integer;cnt integer;begini:=a;j:=1;msg:=''; cnt:=0; FOR j IN 1..aLOOP while i>0LOOPIF j%i=0 THEN   cnt:=cnt+1;END IF; i:=i-1;END LOOP;IF cnt=2 THEN return msg||j;END IF;END LOOP; end;'language plpgsql;
+create or replace function primeNos(integer) returns integer as'declarea alias for $1;i integer; msg text; j integer;cnt integer;begini:=a;j:=1;msg:=''; cnt:=0; FOR j IN 1..aLOOP while i>0LOOPIF j%i=0 THEN   cnt:=cnt+1;END IF; i:=i-1;END LOOP;IF cnt=2 THEN msg:=msg||''||j;END IF;END LOOP; return msg; end;'language plpgsql;
+create or replace function primeNos(integer) returns integer as'declarea alias for $1;i integer; msg text; j integer;cnt integer;begini:=a;j:=1;msg:=''; cnt:=0; FOR j IN 1..aLOOP while i>0LOOPIF j%i=0 THEN   cnt:=cnt+1;END IF; i:=i-1;END LOOP;IF cnt=2 THEN msg:=msg||' '||j;END IF;END LOOP; return msg; end;'language plpgsql;
+create or replace function primeNos(integer) returns integer as'declarea alias for $1;i integer; msg text; j integer;cnt integer;begini:=a;j:=1;msg:=''; cnt:=0; FOR j IN 1..aLOOP while i>0LOOPIF j%i=0 THEN   cnt:=cnt+1;END IF; i:=i-1;END LOOP;IF cnt=2 THEN msg:=msg||''||j;END IF;END LOOP; return msg; end;'language plpgsql;
+\e
+create or replace function primeNos(integer) returns integer as'declarea alias for $1;i integer; msg text; j integer;cnt integer;begini:=a;j:=1;msg:='prime nos:'; cnt:=0; FOR j IN 1..aLOOP while i>0LOOPIF j%i=0 THEN   cnt:=cnt+1;END IF; i:=i-1;END LOOP;IF cnt=2 THEN msg:=msg||''||j;END IF;END LOOP; return msg; end;'language plpgsql;
+create or replace function primeNos(integer) returns integer as'declarea alias for $1;i integer; msg text; j integer;cnt integer;begini:=a;j:=1;msg:='prime nos'; cnt:=0; FOR j IN 1..aLOOP while i>0LOOPIF j%i=0 THEN   cnt:=cnt+1;END IF; i:=i-1;END LOOP;IF cnt=2 THEN msg:=msg||''||j;END IF;END LOOP; return msg; end;'language plpgsql;
+create or replace function primeNos(integer) returns integer as'declarea alias for $1;i integer; msg text; j integer;cnt integer;begini:=a;j:=1;msg:='prime nos'; cnt:=0; FOR j IN 1..aLOOP while i>0LOOPIF j%i=0 THEN   cnt:=cnt+1;END IF; i:=i-1;END LOOP;IF cnt=2 THEN msg:=msg||''||j;END IF;END LOOP; return msg; end;'language plpgsql;
+create or replace function primeNos(integer) returns integer as'declarea alias for $1;i integer; msg text; j integer;cnt integer;begini:=a;j:=1;msg:='prime nos  '; cnt:=0; FOR j IN 1..aLOOP while i>0LOOPIF j%i=0 THEN   cnt:=cnt+1;END IF; i:=i-1;END LOOP;IF cnt=2 THEN msg:=msg||''||j;END IF;END LOOP; return msg; end;'language plpgsql;
+create or replace function primeNos(integer) returns integer as'declarea alias for $1;i integer; msg text; j integer;cnt integer;begini:=a;j:=1; cnt:=0; FOR j IN 1..aLOOP while i>0LOOPIF j%i=0 THEN   cnt:=cnt+1;END IF; i:=i-1;END LOOP;IF cnt=2 THEN msg:=msg||''||j;END IF;END LOOP; return msg; end;'language plpgsql;
+create or replace function primeNos(integer) returns integer as'declarea alias for $1;i integer; msg text; j integer;cnt integer;begini:=a;j:=1; cnt:=0; FOR j IN 1..aLOOP while i>0LOOPIF j%i=0 THEN   cnt:=cnt+1;END IF; i:=i-1;END LOOP;IF cnt=2 THEN msg:=msg||' '||j;END IF;END LOOP; return msg; end;'language plpgsql;
+\e
+create or replace function primeNos(integer) returns integer as'declarea alias for $1;i integer; msg text; j integer;cnt integer;begini:=a;j:=1;cnt:=0; msg:='prime nos ';FOR j IN 2..a LOOP   while i>0   LOOP   IF j%i=0 THEN      cnt:=cnt+1;   END IF;   i:=i-1;  END LOOP;  IF cnt=2    THEN msg:=msg||' '||j;  END IF; END LOOP; return msg; end;'language plpgsql;
+create or replace function primeNos(integer) returns integer as'declarea alias for $1;i integer; msg text; j integer;cnt integer;begini:=a;j:=1;cnt:=0; msg:=' ';FOR j IN 2..a LOOP   while i>0   LOOP   IF j%i=0 THEN      cnt:=cnt+1;   END IF;   i:=i-1;  END LOOP;  IF cnt=2    THEN msg:=msg||' '||j;  END IF; END LOOP; return msg; end;'language plpgsql;
+create or replace function primeNos(integer) returns integer as'declarea alias for $1;i integer; msg text; j integer;cnt integer;begini:=a;j:=1;cnt:=0; msg:='';FOR j IN 2..a LOOP   while i>0   LOOP   IF j%i=0 THEN      cnt:=cnt+1;   END IF;   i:=i-1;  END LOOP;  IF cnt=2    THEN msg:=msg||' '||j;  END IF; END LOOP; return msg; end;'language plpgsql;
+create or replace function primeNos(integer) returns integer as'declarea alias for $1;i integer; msg text; j integer;cnt integer;begini:=a;j:=1;cnt:=0; msg:='';FOR j IN 2..a LOOP   while i>0   LOOP   IF j%i=0 THEN      cnt:=cnt+1;   END IF;   i:=i-1;  END LOOP;  IF cnt=2    THEN msg:=msg||' '||j;  END IF; END LOOP; return msg; end;'language plpgsql;
+create or replace function primeNos(integer) returns integer as'declarea alias for $1;i integer; msg text; j integer;cnt integer;begini:=a;j:=1;cnt:=0; msg:='prime : ';FOR j IN 2..a LOOP   while i>0   LOOP   IF j%i=0 THEN      cnt:=cnt+1;   END IF;   i:=i-1;  END LOOP;  IF cnt=2    THEN msg:=msg||' '||j;  END IF; END LOOP; return msg; end;'language plpgsql;
+create or replace function primeNos(integer) returns integer as'declarea alias for $1;i integer; msg text; j integer;cnt integer;begini:=a;j:=1;cnt:=0; msg:='';FOR j IN 2..a LOOP   while i>0   LOOP   IF j%i=0 THEN      cnt:=cnt+1;   END IF;   i:=i-1;  END LOOP;  IF cnt=2    THEN msg:=msg||' '||j;  END IF; END LOOP; return msg; end;'language plpgsql;\e
+create or replace function primeNos(integer) returns integer as'declarea alias for $1;i integer; msg text; j integer;cnt integer;begini:=a;j:=1;cnt:=0; msg:='prime :';FOR j IN 2..a LOOP   while i>0   LOOP   IF j%i=0 THEN      cnt:=cnt+1;   END IF;   i:=i-1;  END LOOP;  IF cnt=2    THEN msg:=msg||' '||j;  END IF; END LOOP; return msg; end;'language plpgsql;
+create or replace function primeNos(integer) returns integer as'declarea alias for $1;i integer;j integer;cnt integer;begini:=a;j:=1;cnt:=0; FOR j IN 1..aLOOP while i>0LOOPIF j%i=0 THEN   cnt:=cnt+1;END IF; i:=i-1;END LOOP;IF cnt=2 THEN return j;END IF;END LOOP; end;'language plpgsql;
+\e
+create or replace function primeNos(integer) returns integer as'declarea alias for $1;i integer;j integer;cnt integer;msg text;begini:=a;j:=1;msg:='prime :';cnt:=0; FOR j IN 1..aLOOP while i>0LOOPIF j%i=0 THEN   cnt:=cnt+1;END IF; i:=i-1;END LOOP;IF cnt=2 THEN  msg:=msg||' '||j;END IF;END LOOP; return msg;end;'language plpgsql;
+\e
+create or replace function primeNos(integer) returns integer as'declarea alias for $1;i integer;j integer;cnt integer;msg text;begini:=a;j:=1;msg:='prime :';cnt:=0; FOR j IN 2..aLOOP while i>0LOOPIF j%i=0 THEN   cnt:=cnt+1;END IF; i:=i-1;END LOOP;IF cnt=2 THEN  msg:=msg||' '||j;END IF;END LOOP; return msg;end;'language plpgsql;
+create or replace function primeNos(integer) returns integer as'declarea alias for $1;i integer;j integer;cnt integer;msg text;begini:=a;j:=1;msg:=' ';cnt:=0; FOR j IN 2..aLOOP while i>0LOOPIF j%i=0 THEN   cnt:=cnt+1;END IF; i:=i-1;END LOOP;IF cnt=2 THEN  msg:=msg||' '||j;END IF;END LOOP; return msg;end;'language plpgsql;
+create or replace function primeNos(integer) returns integer as'declarea alias for $1;i integer;j integer;cnt integer;msg text;begini:=a;j:=1;msg:=' ';cnt:=0; FOR j IN 2..aLOOP while i>0LOOPIF j%i=0 THEN   cnt:=cnt+1;END IF; i:=i-1;END LOOP;IF cnt=2 THEN  msg:=msg||' '||j;END IF;END LOOP; return msg;end;'language plpgsql;\e
+create or replace function primeNos(integer) returns integer as'declarea alias for $1;i integer;j integer;cnt integer;msg text;begini:=a;j:=1;msg:='sgdfjgsdj';cnt:=0;FOR j IN 2..aLOOP  while i>0 LOOP IF j%i=0 THEN   cnt:=cnt+1; END IF; i:=i-1;END LOOP;IF cnt=2 THEN  msg:=msg||' '||j;END IF;END LOOP; return msg;end;'language plpgsql;
+\e
+create or replace function primeNos(integer) returns integer as'declarea alias for $1;i integer;j integer;cnt integer;msg text;begini:=1;j:=1;msg:=' ';cnt:=0;FOR j IN 2..aLOOP  while i<=j LOOP IF j%i=0 THEN   cnt:=cnt+1; END IF; i:=i+1;END LOOP;i:=1;IF cnt=2 THEN  msg:=msg||' '||j;END IF;END LOOP; return msg;end;'language plpgsql;
+\e\e
+create or replace function primeNos(integer) returns integer as'declarea alias for $1;i integer;j integer;cnt integer;msg text;begini:=1;msg:=' ';cnt:=0;FOR j IN 2..aLOOP  while i<=j LOOP IF j%i=0 THEN   cnt:=cnt+1; END IF; i:=i+1;END LOOP;IF cnt=2 THEN  msg:=msg||' '||j;END IF;i:=1;END LOOP; return msg;end;'language plpgsql;
+\e
+create or replace function primeNos(integer) returns integer as'declarea alias for $1;i integer;j integer;cnt integer;msg text;begini:=1;msg:=' ';cnt:=0;FOR j IN 2..aLOOP  while i<=j LOOP IF j%i=0 THEN   cnt:=cnt+1; END IF; i:=i+1;END LOOP;IF cnt=2 THEN  msg:=msg||' '||j;END IF;i:=1;cnt:=0;END LOOP; return msg;end;'language plpgsql;
+\e\e
+create or replace function primeNos(integer) returns integer as'declarea alias for $1;i integer;j integer;cnt integer;msg text;begini:=1;msg:=' ';cnt:=0;FOR j IN 2..aLOOP  while i<=j LOOP IF j%i=0 THEN   cnt:=cnt+1; END IF; i:=i+1;END LOOP;IF cnt=2 THEN  msg:=msg||' '||j;END IF;i:=1;cnt:=0;END LOOP; return msg;end;'language plpgsql;
+\e
+create or replace function primeNos(integer) returns text as'declarea alias for $1;i integer;j integer;cnt integer;msg text;begini:=1;msg:=' ';cnt:=0;FOR j IN 2..aLOOP  while i<=j LOOP IF j%i=0 THEN   cnt:=cnt+1; END IF; i:=i+1;END LOOP;IF cnt=2 THEN  msg:=msg||' '||j;END IF;i:=1;cnt:=0;END LOOP; return msg;end;'language plpgsql;
+\e
+create or replace function primeNos(integer) returns text as'declarea alias for $1;i integer;j integer;cnt integer;msg text;begini:=1;msg:=' ';cnt:=0;FOR j IN 2..aLOOP  while i<=j LOOP IF j%i=0 THEN   cnt:=cnt+1; END IF; i:=i+1;END LOOP;IF cnt=2 THEN  msg:=msg||' '||j;END IF;i:=1;cnt:=0;END LOOP; return msg;end;'language plpgsql;
+create or replace function primeNos(integer) returns text as'declarea alias for $1;i integer;j integer;cnt integer;msg text;begini:=1;msg:=' ';cnt:=0;FOR j IN 2..aLOOP  while i<=j LOOP IF j%i=0 THEN   cnt:=cnt+1; END IF; i:=i+1;END LOOP;IF cnt=2 THEN  msg:=msg||' '||j;END IF;i:=1;cnt:=0;END LOOP; return msg;end;'language plpgsql;\e
+create or replace function primeNos(integer) returns text as'declarea alias for $1;i integer;j integer;cnt integer;msg text;begini:=1;msg:=' ';cnt:=0;FOR j IN 2..aLOOP i:=1;cnt:=0; while i<=j LOOP IF j%i=0 THEN   cnt:=cnt+1; END IF; i:=i+1;END LOOP;IF cnt=2 THEN  msg:=msg||' '||j;END IF;END LOOP; return msg;end;'language plpgsql;
+create or replace function primeNos(integer) returns text as'declarea alias for $1;i integer;j integer;cnt integer;msg text;begini:=1;msg:=' ';cnt:=0;FOR j IN 2..aLOOP  while i<=j LOOP IF j%i=0 THEN   cnt:=cnt+1; END IF; i:=i+1;END LOOP;IF cnt=2 THEN  msg:=msg||' '||j;END IF;i:=1;cnt:=0;END LOOP; return msg;end;'language plpgsql;\e
+create or replace function primeNos(integer) returns text as'declarea alias for $1;i integer;j integer;cnt integer;msg text;begini:=1;msg:='';cnt:=0;FOR j IN 2..aLOOP  while i<=j LOOP IF j%i=0 THEN   cnt:=cnt+1; END IF; i:=i+1;END LOOP;IF cnt=2 THEN  msg:=msg||' '||j;END IF;i:=1;cnt:=0;END LOOP; return msg;end;'language plpgsql;
+create or replace function primeNos(integer) returns text as'declarea alias for $1;i integer;j integer;cnt integer;msg text;begini:=1;msg:=' ';cnt:=0;FOR j IN 2..aLOOP  while i<=j LOOP IF j%i=0 THEN   cnt:=cnt+1; END IF; i:=i+1;END LOOP;IF cnt=2 THEN  msg:=msg||' '||j;END IF;i:=1;cnt:=0;END LOOP; return msg;end;'language plpgsql;\e
+create or replace function primeNos(integer) returns text as$$declarea alias for $1;i integer;j integer;cnt integer;msg text;begini:=1;msg:=' ';cnt:=0;FOR j IN 2..aLOOP  while i<=j LOOP IF j%i=0 THEN   cnt:=cnt+1; END IF; i:=i+1;END LOOP;IF cnt=2 THEN  msg:=msg||' '||j;END IF;i:=1;cnt:=0;END LOOP; return msg;end;$$language plpgsql;
+create function myappend(anyarray,anyelement) returns anyarray as $$select $1 || $2;$$language sql;
+select myappend(ARRAY[11,2],3);
+select myappend(ARRAY['a','asum'],'a');
+select myappend(ARRAY['a','asum'],'a'),myaapend(ARRAY[1,2,3],4);
+select myappend(ARRAY['a','asum'],'a'),myappend(ARRAY[1,2,3],4);
+select * from abc,pqrl;
+select myappend(ARRAY['a','asum'],'a'),myappend(ARRAY[1,2,3],'sumedha');
+select * from abc,pqr;
+baridiac;
+varidiac;
+\h VARIADIC
+create function Mymin(VARIADIC numeric[]) returns numeric as $$select min($1[i]) from generate_subscripts($1,1) g(i);$$ language sql;
+select Mymin(110,-11,4,5,1);
+\df+ array_to_string  
+create function Mycombine(VARIADIC text[]) returns text AS $$select array_to_string($1,'');$$ language sql;
+select Mycombine('sumedha','jagtap','6/11/1995','16218');
+create function Mycombine(VARIADIC text[]) returns text AS $$select array_to_string($1,',');$$ language sql;
+create function Mycombine1(VARIADIC text[]) returns text AS $$select array_to_string($1,',');$$ language sql;
+select Mycombine1('sumedha','jagtap','6/11/1995','16218');
+create function Mymin1( numeric[]) returns numeric as $$select min($1) from $1;$$ language sql;
+create function Mymin1( numeric[]) returns numeric as $$select min($1) from $1[];$$ language sql;
+select * from abc;
+select * from abc except a=1;
+select * from abc where a>2 except a<6;
+select * from abc where a>2 except select * from abc where a=3;
+select * from abc where abc.a>2 except select * from abc where a=3;
+select * from abc where a>2 except select * from abc where a=3;
+select * from abc where x>2 except select * from abc where x=3;
+explain select * from abc where x>2 except select * from abc where x=3;
+explain select * from abc where x>2 intersect select * from abc where x=3;
+select * from abc where x>2 intersect select * from abc where x=3;
+create or replace function myconcat(anyelement)returns text as $$select concat(',',$1) $$ language sql;
+create aggregate str_myAgg(anyelement) (sfunc=myconcat,stype=text);
+create aggregate str_myAgg(anyelement) (sfunc=myconcat,stype=text);
+\df myconcat
+create aggregate str_myAgg(anyelement) (sfunc=myconcat,stype=text);
+create aggregate str_myAgg(anyelement) (sfunc='myconcat',stype=text);
+create aggregate str_myAgg(anyelement) (sfunc=myconcat,stype=text);
+create aggregate str_myAgg(anyelement) (sfunc=myconcat(),stype=text);
+create aggregate str_myAgg(anyelement) (sfunc=myconcat,stype=text);
+create or replace function myconcat(anyelement)returns text as $$select concat(',',$1) $$ language sql;
+create aggregate str_myAgg(anyelement) (sfunc=myconcat,stype=text);
+create aggregate str_myAgg(anyelement) (sfunc=myconcat(anyelement),stype=text);
+create aggregate str_myAgg(anyelement) (sfunc=myconcat,stype=anyelement);
+create aggregate str_myAgg(anyelement) (sfunc=myconcat,stype=text);
+create aggregate str_myAgg(anyelement) (sfunc=myconcat,stype=text);
+create or replace function myconcat(text,anyelement)returns text as $$select concat(',',$1) $$ language sql;
+create aggregate str_myAgg(anyelement) (sfunc=myconcat,stype=text);
+select str_myAgg(fname) from customer; 
+select str_myAgg('',fname) from customer; 
+select str_myAgg(select fname from customer) from customer; 
+select str_myAgg(fname) from customer; 
+select fname from customer;
+select str_myAgg(select fname from customer) from customer; 
+select str_myAgg(fname) from customer; 
+create or replace function myconcat(text,anyelement)returns text as $$select concat(',',$1) $$ language sql;
+create or replace function myconcat(text,anyelement)returns text as $$select concat($1,',') $$ language sql;
+create aggregate str_myAgg(text,anyelement) (sfunc=myconcat,stype=text);
+drop aggregate str_myAgg;
+drop aggregate str_myAgg(text,anyelement);
+\da
+drop aggregate str_myagg(text,anyelement);
+drop aggregate str_myagg(anyelement);
+create aggregate str_myAgg(text,anyelement) (sfunc=myconcat,stype=text);
+create or replace function myconcat(text,anyelement)returns text as $$select concat($1,',') $$ language sql;
+create aggregate str_myAgg(text,anyelement) (sfunc=myconcat,stype=text);
+create aggregate str_myAgg(anyelement) (sfunc=myconcat,stype=text);
+select str_myAgg(fname) from customer; 
+create or replace function myconcat(text,anyelement)returns text as $$select concat($1,',') $$ language sql;
+create aggregate str_myAgg(anyelement) (sfunc=myconcat,stype=text);
+drop aggregate str_myagg(anyelement);
+select str_myAgg(fname) from customer; 
+select str_myagg(fname) from customer; 
+ select str_myAgg(fname) from customer; 
+drop aggregate str_myagg(anyelement);
+drop aggregate str_myAgg(anyelement);
+\da
+create or replace function myconcat(text,anyelement)returns text as $$select concat($1,',') $$ language sql;
+create aggregate str_myAgg(anyelement) (sfunc=myconcat,stype=text);
+select str_myAgg(fname) from customer; 
+select myconcat('sumedha',9);
+select myconcat('sumedha',1);
+create or replace function myconcat(text)returns text as $$select concat($1,',') $$ language sql;
+create aggregate str_myAgg_text(text) (sfunc=myconcat,stype=text);
+select str_myAgg_text(fname) from customer; 
+create or replace function myconcat(anyelement)returns text as $$select concat($1,',') $$ language sql;
+create aggregate str_myAgg_anyelement(anyelement) (sfunc=myconcat,stype=text);
+select str_myAgg_anyelement(fname) from customer; 
+drop aggregate str_myAgg_anyelement;
+drop aggregate str_myAgg_anyelement(anyelement);
+create aggregate str_myAgg_anyelement(anyelement) (sfunc=myconcat,stype=anyelement);
+create aggregate str_myAgg_anyelement(anyelement) (sfunc=myconcat,stype=text);
+select str_myAgg_anyelement(fname) from customer; 
+select str_myAgg_anyelement(customer.fname) from customer; 
+create or replace function myconcat(anyelement)returns text as $$select concat($1,',') $$ language sql;
+select myconcat(select fname from customer);
+select myconcat(customer.fname);
+select myconcat(customer.fname from customer);
+select myconcat(select customer.fname from customer);
+create or replace function myconcat(anyelement)returns text as $$select concat($1,',') $$ language sql;
+select str_myAgg_anyelement(fname) from customer; 
+create or replace function myconcat(anyelement)returns text as $$select concat($1,'$2') $$ language sql;
+\da
+drop aggregate str_myagg(text);
+drop aggregate str_myagg(text,anyelement);
+drop aggregate str_myagg(anyelement);
+create aggregate str_myAgg(anyelement) (sfunc=myconcat,stype=text);
+select str_myAgg_anyelement(fname) from customer; 
+select str_myAgg(fname) from customer; 
